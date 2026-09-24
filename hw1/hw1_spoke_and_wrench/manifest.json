@@ -1,0 +1,27 @@
+{
+  "business_name": "Spoke & Wrench Bicycle Repair",
+  "owner": "Jordan Lee",
+  "location": "142 Crown Street, New Haven, CT 06510",
+  "accounting_period": "January 2026",
+  "document_pack_version": "2.1",
+  "notes": "v2.1 adds Amazon headphones receipt (links to card 01/04). v2 traps: fleet quote vs email, Park Tool split, NH Bike Parts split, Speedy Courier duplicate, REI/Home Depot judgment calls, mixed Square deposit, CAM not invoiced.",
+  "pdfs": [
+    "lease_jan2026.pdf",
+    "bank_statement_jan2026.pdf",
+    "credit_card_jan2026.pdf",
+    "receipt_park_tool.pdf",
+    "receipt_nhbp_parts.pdf",
+    "receipt_home_depot.pdf",
+    "receipt_courier.pdf",
+    "receipt_amazon_headphones.pdf",
+    "iou_mike_smith.pdf",
+    "ebay_repair_stand.pdf",
+    "quote_hartford_mutual_fleet.pdf"
+  ],
+  "emails": [
+    "email_fleet_wellness.txt",
+    "email_yale_cycling_club.txt",
+    "email_wedding_ebikes.txt",
+    "email_owner_voice_memo.txt"
+  ]
+}

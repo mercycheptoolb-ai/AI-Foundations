@@ -1,0 +1,452 @@
+[
+  {
+    "id": "rent_january",
+    "sources": [
+      "bank_transactions.json",
+      "lease_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 1800.0,
+      "lease_jan2026.pdf": 1800.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 1800.0,
+    "resolution": "Bank check #1042 matches the January rent invoice for the business premises."
+  },
+  {
+    "id": "square_walkin_tuneups",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 420.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 420.0,
+    "resolution": "Square deposit is identified as shop walk-in tune-up revenue."
+  },
+  {
+    "id": "yale_health_service_revenue",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 1150.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 1150.0,
+    "resolution": "ACH deposit is labeled as payment for Yale Health employee bike service."
+  },
+  {
+    "id": "electricity_expense",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 186.42
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 186.42,
+    "resolution": "Business checking payment to Eversource is identified as shop electricity."
+  },
+  {
+    "id": "square_brake_jobs",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 315.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 315.0,
+    "resolution": "Square deposit is identified as revenue from brake jobs and chains."
+  },
+  {
+    "id": "owner_draw_savings",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 900.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The transfer is explicitly marked personal owner draw, not a business expense."
+  },
+  {
+    "id": "city_nh_fleet_revenue",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 2400.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 2400.0,
+    "resolution": "ACH deposit is labeled payment for City of NH fleet maintenance invoice #884."
+  },
+  {
+    "id": "comcast_business_internet",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 89.99
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 89.99,
+    "resolution": "Debit-card payment is explicitly identified as business internet service."
+  },
+  {
+    "id": "square_walkins_adjusted",
+    "sources": [
+      "bank_transactions.json",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 560.0,
+      "email_owner_voice_memo.txt": 95.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 465.0,
+    "resolution": "The $560 deposit is business walk-in revenue, but the owner identified $95 as a roommate's personal tune-up. Only $465 is booked as revenue."
+  },
+  {
+    "id": "nhbp_check_restock",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 742.18
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 742.18,
+    "resolution": "Business check #1043 is a separate New Haven Bike Parts wholesale restock order and is booked as parts COGS."
+  },
+  {
+    "id": "st_raphael_revenue",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 1850.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 1850.0,
+    "resolution": "ACH deposit is labeled as the St. Raphael custom-build final payment."
+  },
+  {
+    "id": "owner_draw_atm",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 200.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "ATM withdrawal is explicitly marked personal cash and owner draw."
+  },
+  {
+    "id": "square_weekend_jobs",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 980.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 980.0,
+    "resolution": "Square weekend-rush deposit is shop service revenue."
+  },
+  {
+    "id": "state_farm_liability_insurance",
+    "sources": [
+      "bank_transactions.json",
+      "bank_statement_jan2026.pdf"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 214.0,
+      "bank_statement_jan2026.pdf": 214.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 214.0,
+    "resolution": "Business debit-card payment is general liability insurance for the shop."
+  },
+  {
+    "id": "westville_pto_revenue",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 570.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 570.0,
+    "resolution": "ACH deposit is identified as payment for the Westville PTO bike safety event."
+  },
+  {
+    "id": "monthly_bank_fee",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 15.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 15.0,
+    "resolution": "Monthly service fee is a business bank expense."
+  },
+  {
+    "id": "park_tool_card_purchase",
+    "sources": [
+      "bank_transactions.json",
+      "credit_card_transactions.json",
+      "receipt_park_tool.pdf"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 344.55,
+      "credit_card_transactions.json": 127.4,
+      "receipt_park_tool.pdf": 88.7
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 127.4,
+    "resolution": "The $127.40 card charge matches the Park Tool receipt and includes the $88.70 register purchase plus the separately shipped back-ordered spanner. The $344.55 bank debit is a distinct Park Tool vendor-portal transaction and is booked separately."
+  },
+  {
+    "id": "park_tool_vendor_portal",
+    "sources": [
+      "bank_transactions.json"
+    ],
+    "amounts_seen": {
+      "bank_transactions.json": 344.55
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 344.55,
+    "resolution": "Business debit-card payment is labeled Park Tool vendor portal; no evidence matches it to the $127.40 card statement charge."
+  },
+  {
+    "id": "amazon_headphones_personal",
+    "sources": [
+      "credit_card_transactions.json",
+      "receipt_amazon_headphones.pdf"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 89.99,
+      "receipt_amazon_headphones.pdf": 89.99
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The receipt matches the Amazon card charge, but the owner identified the headphones as personal commute equipment."
+  },
+  {
+    "id": "park_tool_receipt_card_match",
+    "sources": [
+      "credit_card_transactions.json",
+      "receipt_park_tool.pdf"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 127.4,
+      "receipt_park_tool.pdf": 88.7
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 127.4,
+    "resolution": "The receipt is part of the business Park Tool card charge; the card statement total is used because it includes the later back-ordered item."
+  },
+  {
+    "id": "staples_office_supplies",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 43.17
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 43.17,
+    "resolution": "Business-classified Staples purchase is booked as office supplies."
+  },
+  {
+    "id": "speedy_courier_parts_delivery",
+    "sources": [
+      "credit_card_transactions.json",
+      "receipt_courier.pdf"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 28.0,
+      "receipt_courier.pdf": 28.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 28.0,
+    "resolution": "The card charge matches the courier receipt for emergency tubes delivery; it is counted once as shipping expense."
+  },
+  {
+    "id": "home_depot_shop_supplies",
+    "sources": [
+      "credit_card_transactions.json",
+      "receipt_home_depot.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 67.12,
+      "receipt_home_depot.pdf": 67.12,
+      "email_owner_voice_memo.txt": 67.12
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 67.12,
+    "resolution": "The card charge matches the receipt, and the owner confirmed the bins and cleaning items were for the shop despite the mixed-use card."
+  },
+  {
+    "id": "yale_printing",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 89.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 89.0,
+    "resolution": "Business-classified Yale Printing charge is booked as printing expense."
+  },
+  {
+    "id": "nhbp_card_parts",
+    "sources": [
+      "credit_card_transactions.json",
+      "receipt_nhbp_parts.pdf"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 218.4,
+      "receipt_nhbp_parts.pdf": 218.4
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 218.4,
+    "resolution": "The card charge matches the January 19 counter invoice and is a separate parts purchase from the $742.18 check, so it is booked once as COGS."
+  },
+  {
+    "id": "amazon_web_services",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 19.99
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 19.99,
+    "resolution": "Business-classified AWS charge is booked as software expense."
+  },
+  {
+    "id": "rei_business_outerwear",
+    "sources": [
+      "credit_card_transactions.json",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 156.0,
+      "email_owner_voice_memo.txt": 156.0
+    },
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 156.0,
+    "resolution": "Although the card classification is personal and the treatment is debatable, the owner stated the REI jacket was required high-visibility business outerwear for Yale on-site work."
+  },
+  {
+    "id": "instacart_personal",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 64.22
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "Instacart/Whole Foods purchase is classified as personal grocery spending."
+  },
+  {
+    "id": "ebay_repair_stand_personal_classified",
+    "sources": [
+      "credit_card_transactions.json",
+      "ebay_repair_stand.pdf"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 425.0,
+      "ebay_repair_stand.pdf": 425.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The eBay charge matches the repair-stand order, but the supplied card record classifies it as personal. No contrary bookkeeping instruction establishes a business booking."
+  },
+  {
+    "id": "netflix_personal",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 15.49
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "Netflix subscription is classified as personal."
+  },
+  {
+    "id": "shell_personal",
+    "sources": [
+      "credit_card_transactions.json"
+    ],
+    "amounts_seen": {
+      "credit_card_transactions.json": 52.1
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "Shell fuel purchase is classified as personal."
+  },
+  {
+    "id": "mike_smith_iou",
+    "sources": [
+      "iou_mike_smith.pdf",
+      "email_owner_voice_memo.txt"
+    ],
+    "amounts_seen": {
+      "iou_mike_smith.pdf": 180.0,
+      "email_owner_voice_memo.txt": 180.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The IOU documents earned service consideration, but payment is not yet received and the owner said it is not in the bank. No January cash revenue is booked."
+  },
+  {
+    "id": "hartford_mutual_future_contract",
+    "sources": [
+      "quote_hartford_mutual_fleet.pdf",
+      "email_fleet_wellness.txt"
+    ],
+    "amounts_seen": {
+      "quote_hartford_mutual_fleet.pdf": 6593.7,
+      "email_fleet_wellness.txt": 6800.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The quote totals $6,593.70 while the email states an approved budget of $6,800; both describe March work with no January payment. The amount is excluded from January revenue, and the discrepancy remains unresolved for future billing."
+  },
+  {
+    "id": "wedding_ebike_future_work",
+    "sources": [
+      "email_wedding_ebikes.txt"
+    ],
+    "amounts_seen": {
+      "email_wedding_ebikes.txt": 5600.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "This is only a June estimate with no deposit, so it is not January revenue."
+  },
+  {
+    "id": "yale_cycling_future_work",
+    "sources": [
+      "email_yale_cycling_club.txt"
+    ],
+    "amounts_seen": {
+      "email_yale_cycling_club.txt": 2400.0
+    },
+    "included_in_income_statement": "no",
+    "amount_used_in_income_statement": 0,
+    "resolution": "The Yale Cycling Club amount is a February proposal with no deposit received; the possible rush surcharge is also not booked."
+  }
+]

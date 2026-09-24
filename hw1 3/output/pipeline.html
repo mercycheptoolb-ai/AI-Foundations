@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HW1 Processing Pipeline</title>
+  <style>
+    :root{--bg:#100a12;--panel:#211522;--line:#ff4fa3;--text:#fff3fa;--muted:#d4b5c8;--green:#8df5c0}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,sans-serif}
+    main{max-width:1250px;margin:auto;padding:34px 22px 55px}h1{font-size:clamp(2rem,4vw,3.5rem);margin:0;color:var(--line)}h2{margin:34px 0 14px;color:#ffb7dc}.subtitle{color:var(--muted);margin-top:5px}
+    .legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);margin:24px 0}.legend span{display:inline-flex;align-items:center;gap:7px}.dot{width:12px;height:12px;border-radius:3px;background:var(--line)}.dot.input{background:#9a6cff}.dot.output{background:var(--green)}.dot.ai{background:#ffc857}
+    .flow{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:0;align-items:center;overflow-x:auto;padding:8px 0 16px}.node{min-height:105px;padding:14px 12px;border:1px solid #633452;border-radius:14px;background:var(--panel);box-shadow:0 8px 24px #0005}.node.input{border-color:#9a6cff}.node.script{border-color:var(--line)}.node.output{border-color:var(--green)}.node.ai{border-color:#ffc857}.node h3{font-size:15px;margin:0 0 7px;color:var(--line)}.node.input h3{color:#bda4ff}.node.output h3{color:var(--green)}.node.ai h3{color:#ffc857}.node p{margin:4px 0;color:var(--muted);font-size:12px}.arrow{color:var(--line);font-size:26px;text-align:center;padding:0 5px}.badge{display:inline-block;margin-top:8px;border-radius:99px;padding:2px 7px;background:#5a3f18;color:#ffd978;font-size:11px}
+    .lane{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center;padding:12px 0;border-bottom:1px solid #382335}.lane:last-child{border:0}.lane-title{font-weight:700;color:var(--line)}.lane-content{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.mini{padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid #633452}.mini.input{border-color:#9a6cff}.mini.output{border-color:var(--green)}.mini.ai{border-color:#ffc857}.connector{color:var(--line);font-size:20px}
+    .note{margin-top:24px;padding:16px;border-left:3px solid var(--line);background:#1c111d;color:var(--muted)}code{color:#ffd1e8}
+    @media(max-width:700px){.lane{grid-template-columns:1fr}.flow{grid-template-columns:repeat(7,150px)}}
+  </style>
+</head>
+<body><main>
+  <h1>HW1 processing pipeline</h1>
+  <p class="subtitle">Problems 2–9 · document pack → reconciled records → January income statement</p>
+  <div class="legend"><span><i class="dot input"></i>key input</span><span><i class="dot"></i>script / transformation</span><span><i class="dot output"></i>output file</span><span><i class="dot ai"></i>OpenAI via Portkey</span></div>
+
+  <h2>End-to-end path</h2>
+  <div class="flow">
+    <div class="node input"><h3>Document pack</h3><p>hw1_spoke_and_wrench/</p><p>PDFs + emails</p></div><div class="arrow">→</div>
+    <div class="node script ai"><h3>read_receipts.py</h3><p>Reads receipt PDFs + receipts_extract.md</p><span class="badge">OpenAI</span></div><div class="arrow">→</div>
+    <div class="node output"><h3>receipts.json</h3><p>One row per purchase receipt</p></div><div class="arrow">→</div>
+    <div class="node script ai"><h3>reconcile.py</h3><p>Reads all extracted JSON + document text</p><span class="badge">OpenAI</span></div>
+  </div>
+  <div class="flow">
+    <div class="node input"><h3>reconciliation_log.json</h3><p>35 reconciled decisions</p></div><div class="arrow">→</div>
+    <div class="node script"><h3>income_statement.py</h3><p>Reads reconciliation_log.json</p></div><div class="arrow">→</div>
+    <div class="node output"><h3>income_statement_jan2026.json</h3><p>Revenue, expenses, net income</p></div><div class="arrow">→</div>
+    <div class="node script"><h3>report.py</h3><p>Reads output JSON files</p></div><div class="arrow">→</div>
+    <div class="node output"><h3>income_statement.html</h3><p>Human-readable webpage</p></div>
+  </div>
+
+  <h2>Every processing step</h2>
+  <div class="lanes">
+    <div class="lane"><div class="lane-title">Problem 2 · Read receipts</div><div class="lane-content"><div class="mini input">receipt_*.pdf</div><b class="connector">→</b><div class="mini ai">read_receipts.py<br><small>OpenAI via Portkey</small></div><b class="connector">→</b><div class="mini output">output/receipts.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 3 · Read bank statement</div><div class="lane-content"><div class="mini input">bank_statement_jan2026.pdf</div><b class="connector">→</b><div class="mini ai">read_bank.py<br><small>OpenAI via Portkey</small></div><b class="connector">→</b><div class="mini output">output/bank_transactions.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 4 · Read card statement</div><div class="lane-content"><div class="mini input">credit_card_jan2026.pdf</div><b class="connector">→</b><div class="mini ai">read_card.py<br><small>OpenAI via Portkey</small></div><b class="connector">→</b><div class="mini output">output/credit_card_transactions.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 5 · Reconcile</div><div class="lane-content"><div class="mini input">3 JSON files + PDF/email text</div><b class="connector">→</b><div class="mini ai">reconcile.py<br><small>OpenAI via Portkey</small></div><b class="connector">→</b><div class="mini output">output/reconciliation_log.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 6 · Judgment calls</div><div class="lane-content"><div class="mini input">reconciliation_log.json</div><b class="connector">→</b><div class="mini">manual selection</div><b class="connector">→</b><div class="mini output">output/judgment_calls.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 7 · Income statement</div><div class="lane-content"><div class="mini input">reconciliation_log.json</div><b class="connector">→</b><div class="mini">income_statement.py</div><b class="connector">→</b><div class="mini output">output/income_statement_jan2026.json</div></div></div>
+    <div class="lane"><div class="lane-title">Problem 8 · Webpage</div><div class="lane-content"><div class="mini input">income statement + reconciliation + judgment JSON</div><b class="connector">→</b><div class="mini">report.py</div><b class="connector">→</b><div class="mini output">output/income_statement.html</div></div></div>
+  </div>
+  <div class="note"><strong>OpenAI boundary:</strong> Problems 2–5 call OpenAI through Portkey for extraction and reconciliation. Problems 6–8 use deterministic Python/HTML transformations from the saved JSON outputs. The final path is <code>document pack → receipts/bank/card JSON → reconciliation_log.json → income_statement_jan2026.json → income_statement.html</code>.</div>
+</main></body></html>

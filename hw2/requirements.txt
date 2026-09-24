@@ -1,0 +1,5 @@
+pydantic-ai
+openai
+python-dotenv
+playwright
+beautifulsoup4

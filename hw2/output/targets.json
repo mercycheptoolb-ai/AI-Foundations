@@ -1,0 +1,45 @@
+[
+  {
+    "company_name": "ThriveAgric",
+    "website": "https://thriveagric.com",
+    "country": "Nigeria",
+    "why_it_matches": "ThriveAgric is an agri-business platform and rural growth company in Africa, which matches Open Capital’s focus on agricultural value chains, market building, and client-support programs.",
+    "business_context": "ThriveAgric works in agricultural value chains and farmer financing, with a clear business focus on growth and smallholder productivity.",
+    "contact_emails": [
+      "info@thriveagric.com"
+    ],
+    "source_urls": [
+      "https://thriveagric.com",
+      "https://thriveagric.com/contact"
+    ]
+  },
+  {
+    "company_name": "AgroMall",
+    "website": "https://agromall.com.ng",
+    "country": "Nigeria",
+    "why_it_matches": "AgroMall is a food-and-agriculture commerce business with an operational focus that aligns with Open Capital’s agricultural market-building and business-support work.",
+    "business_context": "AgroMall is an agri-commerce business focused on distribution and market access for agricultural products and buyers.",
+    "contact_emails": [
+      "info@agromall.com.ng"
+    ],
+    "source_urls": [
+      "https://agromall.com.ng",
+      "https://agromall.com.ng/contact"
+    ]
+  },
+  {
+    "company_name": "Bopinc",
+    "website": "https://bopinc.org",
+    "country": "Kenya",
+    "why_it_matches": "Bopinc works closely with businesses and SMEs in underserved markets, which aligns with Open Capital’s advisory and market-development profile for growth-stage businesses.",
+    "business_context": "Bopinc is a business-support and market-development organization working with enterprises and small businesses in emerging markets.",
+    "contact_emails": [
+      "info@bopinc.org",
+      "bd@bopinc.org"
+    ],
+    "source_urls": [
+      "https://bopinc.org",
+      "https://bopinc.org/contact"
+    ]
+  }
+]

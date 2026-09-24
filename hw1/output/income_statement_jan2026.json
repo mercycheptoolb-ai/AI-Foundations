@@ -1,0 +1,122 @@
+{
+  "period": "2026-01",
+  "revenue_usd": 8274.98,
+  "expense_lines": [
+    {
+      "label": "rent_january",
+      "amount_usd": 1800.0,
+      "category": "rent",
+      "sources": [
+        "bank_transactions.json",
+        "lease_jan2026.pdf"
+      ]
+    },
+    {
+      "label": "electricity_expense",
+      "amount_usd": 186.42,
+      "category": "utilities",
+      "sources": [
+        "bank_transactions.json"
+      ]
+    },
+    {
+      "label": "nhbp_check_restock",
+      "amount_usd": 742.18,
+      "category": "cogs_parts",
+      "sources": [
+        "bank_transactions.json"
+      ]
+    },
+    {
+      "label": "state_farm_liability_insurance",
+      "amount_usd": 214.0,
+      "category": "insurance",
+      "sources": [
+        "bank_transactions.json",
+        "bank_statement_jan2026.pdf"
+      ]
+    },
+    {
+      "label": "park_tool_card_purchase",
+      "amount_usd": 127.4,
+      "category": "tools_equipment",
+      "sources": [
+        "bank_transactions.json",
+        "credit_card_transactions.json",
+        "receipt_park_tool.pdf"
+      ]
+    },
+    {
+      "label": "park_tool_vendor_portal",
+      "amount_usd": 344.55,
+      "category": "tools_equipment",
+      "sources": [
+        "bank_transactions.json"
+      ]
+    },
+    {
+      "label": "park_tool_receipt_card_match",
+      "amount_usd": 127.4,
+      "category": "tools_equipment",
+      "sources": [
+        "credit_card_transactions.json",
+        "receipt_park_tool.pdf"
+      ]
+    },
+    {
+      "label": "staples_office_supplies",
+      "amount_usd": 43.17,
+      "category": "office_supplies",
+      "sources": [
+        "credit_card_transactions.json"
+      ]
+    },
+    {
+      "label": "speedy_courier_parts_delivery",
+      "amount_usd": 28.0,
+      "category": "shipping",
+      "sources": [
+        "credit_card_transactions.json",
+        "receipt_courier.pdf"
+      ]
+    },
+    {
+      "label": "home_depot_shop_supplies",
+      "amount_usd": 67.12,
+      "category": "tools_equipment",
+      "sources": [
+        "credit_card_transactions.json",
+        "receipt_home_depot.pdf",
+        "email_owner_voice_memo.txt"
+      ]
+    },
+    {
+      "label": "yale_printing",
+      "amount_usd": 89.0,
+      "category": "printing",
+      "sources": [
+        "credit_card_transactions.json"
+      ]
+    },
+    {
+      "label": "nhbp_card_parts",
+      "amount_usd": 218.4,
+      "category": "cogs_parts",
+      "sources": [
+        "credit_card_transactions.json",
+        "receipt_nhbp_parts.pdf"
+      ]
+    },
+    {
+      "label": "rei_business_outerwear",
+      "amount_usd": 156.0,
+      "category": "other_expense",
+      "sources": [
+        "credit_card_transactions.json",
+        "email_owner_voice_memo.txt"
+      ]
+    }
+  ],
+  "total_expenses_usd": 4143.64,
+  "net_income_usd": 4131.34
+}

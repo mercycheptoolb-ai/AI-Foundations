@@ -1,0 +1,63 @@
+:root {
+  --navy-950: #040b1f;
+  --navy-900: #071536;
+  --blue-700: #123a8f;
+  --blue-500: #2f6bff;
+  --blue-300: #8db8ff;
+  --orange-600: #f25c05;
+  --orange-500: #ff7a1a;
+  --orange-400: #ff9d3c;
+  --gold: #ffc93c;
+  --star-red: #d7261e;
+
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-strong: rgba(255, 255, 255, 0.11);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --text: #eef3ff;
+  --text-dim: rgba(226, 234, 255, 0.72);
+  --text-faint: rgba(226, 234, 255, 0.5);
+
+  --radius: 18px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 700px at 8% -10%, rgba(255, 122, 26, 0.35), transparent 60%),
+    radial-gradient(1000px 800px at 105% 110%, rgba(47, 107, 255, 0.45), transparent 60%),
+    linear-gradient(160deg, var(--navy-900) 0%, var(--navy-950) 55%, #0a1a4a 100%);
+  background-attachment: fixed;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--orange-400);
+}
+
+::selection {
+  background: rgba(255, 122, 26, 0.45);
+}

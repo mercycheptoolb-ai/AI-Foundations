@@ -1,0 +1,155 @@
+[
+  {
+    "date": "01/02",
+    "description": "CHECK #1042 \u2014 Crown Street Properties (rent)",
+    "amount_usd": 1800.0,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "rent"
+  },
+  {
+    "date": "01/03",
+    "description": "POS DEPOSIT \u2014 Square *Walk-in tune-ups",
+    "amount_usd": 420.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/05",
+    "description": "ACH DEPOSIT \u2014 Yale Health employee bike svc",
+    "amount_usd": 1150.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/07",
+    "description": "ONLINE PMT \u2014 Eversource electric",
+    "amount_usd": 186.42,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "utilities"
+  },
+  {
+    "date": "01/08",
+    "description": "POS DEPOSIT \u2014 Square *Brake jobs / chains",
+    "amount_usd": 315.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/10",
+    "description": "TRANSFER TO SAVINGS ****3301 \u2014 owner draw (personal)",
+    "amount_usd": 900.0,
+    "classification": "personal",
+    "direction": "debit",
+    "accounting_label": "owner_draw",
+    "expense_type": null
+  },
+  {
+    "date": "01/12",
+    "description": "ACH DEPOSIT \u2014 City of NH fleet maintenance inv #884",
+    "amount_usd": 2400.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/14",
+    "description": "DEBIT CARD \u2014 Comcast business internet",
+    "amount_usd": 89.99,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "internet"
+  },
+  {
+    "date": "01/15",
+    "description": "POS DEPOSIT \u2014 Cash & card walk-ins (see owner notes)",
+    "amount_usd": 560.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/18",
+    "description": "CHECK #1043 \u2014 New Haven Bike Parts wholesale",
+    "amount_usd": 742.18,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "cogs_parts"
+  },
+  {
+    "date": "01/20",
+    "description": "ACH DEPOSIT \u2014 St. Raphael custom build final pmt",
+    "amount_usd": 1850.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/22",
+    "description": "ATM WITHDRAWAL \u2014 Jordan Lee personal cash",
+    "amount_usd": 200.0,
+    "classification": "personal",
+    "direction": "debit",
+    "accounting_label": "owner_draw",
+    "expense_type": null
+  },
+  {
+    "date": "01/24",
+    "description": "POS DEPOSIT \u2014 Square weekend rush jobs",
+    "amount_usd": 980.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/27",
+    "description": "DEBIT CARD \u2014 State Farm business liability premium",
+    "amount_usd": 214.0,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "insurance"
+  },
+  {
+    "date": "01/28",
+    "description": "ACH DEPOSIT \u2014 Westville PTO bike safety event",
+    "amount_usd": 570.0,
+    "classification": "business",
+    "direction": "credit",
+    "accounting_label": "revenue",
+    "expense_type": null
+  },
+  {
+    "date": "01/30",
+    "description": "MONTHLY SERVICE FEE",
+    "amount_usd": 15.0,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "bank_fees"
+  },
+  {
+    "date": "01/31",
+    "description": "DEBIT CARD \u2014 Park Tool vendor portal",
+    "amount_usd": 344.55,
+    "classification": "business",
+    "direction": "debit",
+    "accounting_label": "expense",
+    "expense_type": "shop_supplies"
+  }
+]

@@ -1,0 +1,4 @@
+dash
+openai
+python-dotenv
+yfinance

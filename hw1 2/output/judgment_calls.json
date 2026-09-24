@@ -1,0 +1,33 @@
+[
+  {
+    "transation_id": "park_tool_card_purchase",
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 127.4,
+    "evidence_for": [
+      "bank_transactions.json",
+      "credit_card_transactions.json",
+      "receipt_park_tool.pdf"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "transation_id": "square_walkins_adjusted",
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 465.0,
+    "evidence_for": [
+      "bank_transactions.json",
+      "email_owner_voice_memo.txt"
+    ],
+    "confidence": "medium"
+  },
+  {
+    "transation_id": "rei_business_outerwear",
+    "included_in_income_statement": "yes",
+    "amount_used_in_income_statement": 156.0,
+    "evidence_for": [
+      "credit_card_transactions.json",
+      "email_owner_voice_memo.txt"
+    ],
+    "confidence": "low"
+  }
+]

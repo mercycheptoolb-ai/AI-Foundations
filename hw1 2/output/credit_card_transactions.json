@@ -1,0 +1,93 @@
+[
+  {
+    "date": "01/04",
+    "merchant": "AMAZON MKTPLACE",
+    "amount_usd": 89.99,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/06",
+    "merchant": "PARK TOOL CO",
+    "amount_usd": 127.4,
+    "classification": "business",
+    "expense-category": "tools_equipment"
+  },
+  {
+    "date": "01/09",
+    "merchant": "INSTACART *WHOLE FOODS",
+    "amount_usd": 64.22,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/11",
+    "merchant": "STAPLES 03418 NH",
+    "amount_usd": 43.17,
+    "classification": "business",
+    "expense-category": "office_supplies"
+  },
+  {
+    "date": "01/13",
+    "merchant": "EBAY O*17-8844-2291",
+    "amount_usd": 425.0,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/14",
+    "merchant": "REI #142 NEW HAVEN",
+    "amount_usd": 156.0,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/16",
+    "merchant": "NETFLIX.COM",
+    "amount_usd": 15.49,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/17",
+    "merchant": "SPEEDY COURIER NH",
+    "amount_usd": 28.0,
+    "classification": "business",
+    "expense-category": "shipping"
+  },
+  {
+    "date": "01/19",
+    "merchant": "HOME DEPOT #4602",
+    "amount_usd": 67.12,
+    "classification": "business",
+    "expense-category": "tools_equipment"
+  },
+  {
+    "date": "01/21",
+    "merchant": "YALE PRINTING SVCS",
+    "amount_usd": 89.0,
+    "classification": "business",
+    "expense-category": "printing"
+  },
+  {
+    "date": "01/23",
+    "merchant": "SHELL OIL 574421",
+    "amount_usd": 52.1,
+    "classification": "personal",
+    "expense-category": null
+  },
+  {
+    "date": "01/25",
+    "merchant": "NEW HAVEN BIKE PARTS",
+    "amount_usd": 218.4,
+    "classification": "business",
+    "expense-category": "cogs_parts"
+  },
+  {
+    "date": "01/29",
+    "merchant": "AMAZON WEB SERVICES",
+    "amount_usd": 19.99,
+    "classification": "business",
+    "expense-category": "software"
+  }
+]

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Capital | Sales Dashboard</title>
+  <style>
+    :root {
+      --ink: #071b33;
+      --deep: #0b2948;
+      --blue: #0d5ea6;
+      --sky: #83d5f5;
+      --mist: #eaf7fc;
+      --paper: #f7fbfd;
+      --white: #ffffff;
+      --line: #c9e4ef;
+      --muted: #557087;
+      --coral: #ff806f;
+      --lime: #b8edcf;
+      --shadow: 0 20px 55px rgba(7, 27, 51, .12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.55;
+    }
+    a { color: var(--blue); }
+    button, .pill, .eyebrow, nav, .label, .rank, .stat-value { font-family: 'Trebuchet MS', Verdana, sans-serif; }
+    button { cursor: pointer; }
+
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(247, 251, 253, .9);
+      border-bottom: 1px solid rgba(201, 228, 239, .9);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 68px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; font-weight: 700; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; color: var(--white); background: var(--blue); border-radius: 10px 10px 10px 2px; font-size: 19px; }
+    nav { display: flex; gap: 23px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--blue); }
+
+    .hero { overflow: hidden; position: relative; padding: clamp(58px, 7vw, 82px) 0 clamp(56px, 6vw, 76px); background: var(--deep); color: var(--white); }
+    .hero::after { content: ''; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(131, 213, 245, .28); border-radius: 50%; right: -110px; top: -175px; box-shadow: 0 0 0 34px rgba(131, 213, 245, .06), 0 0 0 70px rgba(131, 213, 245, .04); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(250px, .72fr); gap: clamp(30px, 5vw, 64px); align-items: center; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--sky); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+    .eyebrow::before { content: ''; display: block; width: 30px; height: 2px; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 720px; margin: 18px 0 20px; font-size: clamp(40px, 6vw, 72px); line-height: .98; letter-spacing: -.045em; font-weight: 400; }
+    .hero-copy { max-width: 620px; color: #d8f1f8; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.45; }
+    .hero-link { display: inline-block; margin-top: 13px; color: var(--sky); font-family: 'Trebuchet MS', Verdana, sans-serif; font-size: 13px; font-weight: 700; }
+    .signal { max-width: 390px; padding: clamp(22px, 3vw, 31px); border: 1px solid rgba(131, 213, 245, .28); background: rgba(255, 255, 255, .06); border-radius: var(--radius); }
+    .signal-label { color: var(--sky); font: 700 11px 'Trebuchet MS', Verdana, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .signal strong { display: block; margin: 12px 0 12px; font-size: clamp(29px, 3.2vw, 42px); line-height: 1.05; font-weight: 400; }
+    .signal p { margin: 0; color: #d8f1f8; font-size: clamp(14px, 1.5vw, 17px); line-height: 1.5; }
+
+    main { padding: 72px 0 110px; }
+    section { scroll-margin-top: 94px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+    .section-head h2 { margin: 8px 0 0; font-size: clamp(30px, 4vw, 48px); line-height: 1.05; letter-spacing: -.035em; font-weight: 400; }
+    .section-note { max-width: 360px; margin: 0; color: var(--muted); font-size: 14px; }
+    .target-note { max-width: 610px; margin-top: 22px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 70px; }
+    .stat { min-height: 138px; padding: 22px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 7px 20px rgba(7, 27, 51, .04); }
+    .stat-value { display: block; margin-bottom: 8px; color: var(--blue); font-size: 32px; font-weight: 700; }
+    .stat-label { color: var(--muted); font-size: 13px; }
+
+    .overview { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; margin-bottom: 82px; }
+    .panel { padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .panel h3 { margin-bottom: 12px; font-size: 23px; font-weight: 400; }
+    .panel p { color: #304b61; }
+    .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; margin: 18px 0 0; list-style: none; }
+    .service-list li { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 9px 11px; color: #304b61; background: var(--mist); border: 1px solid var(--line); border-radius: 10px; font: 700 12px 'Trebuchet MS', Verdana, sans-serif; }
+    .service-list li::before { content: '↗'; display: grid; place-items: center; flex: 0 0 24px; width: 24px; height: 24px; color: var(--white); background: var(--blue); border-radius: 7px; font-size: 13px; }
+    .source-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .source-row a { padding: 6px 10px; color: var(--blue); background: var(--mist); border-radius: 100px; font: 700 11px 'Trebuchet MS', Verdana, sans-serif; text-decoration: none; }
+
+    .targets { background: var(--mist); padding: 58px 0 72px; }
+    .target-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .target-card { display: flex; flex-direction: column; min-height: 372px; padding: 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); transition: transform .25s ease, box-shadow .25s ease; }
+    .target-card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(7, 27, 51, .12); }
+    .rank { display: flex; align-items: center; justify-content: space-between; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .rank span { display: grid; place-items: center; width: 38px; height: 38px; color: var(--white); background: var(--blue); border-radius: 50%; font-size: 17px; letter-spacing: 0; }
+    .target-card h3 { margin: 23px 0 3px; font-size: 31px; font-weight: 400; }
+    .country { color: var(--muted); font: 700 12px 'Trebuchet MS', Verdana, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .target-card p { color: #304b61; font-size: 14px; }
+    .target-card .match { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .label { display: block; margin-bottom: 6px; color: var(--blue); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .contact { margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .contact a { font: 700 12px 'Trebuchet MS', Verdana, sans-serif; overflow-wrap: anywhere; }
+    .site-link { color: var(--muted); font-size: 12px; }
+
+    .emails { padding-top: 78px; }
+    .email-list { display: grid; gap: 15px; }
+    .email-toggle { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 22px; padding: 13px 17px; color: var(--white); background: var(--blue); border: 0; border-radius: 10px; font-size: 12px; font-weight: 700; letter-spacing: .04em; transition: background .2s ease, transform .2s ease; }
+    .email-toggle { width: min(100%, 430px); justify-content: center; }
+    .email-toggle:hover { background: var(--deep); transform: translateY(-2px); }
+    .email-toggle::after { content: '+'; display: grid; place-items: center; width: 20px; height: 20px; color: var(--blue); background: var(--white); border-radius: 50%; font-size: 17px; font-weight: 400; line-height: 1; }
+    .email-toggle[aria-expanded="true"]::after { content: '−'; }
+    .email-list.collapsed { display: none; }
+    .email-note { max-width: 680px; margin: -9px 0 20px; }
+    .email-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 7px 20px rgba(7, 27, 51, .04); }
+    .email-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 24px; background: #f0f9fc; }
+    .email-title { display: flex; align-items: center; gap: 13px; }
+    .email-dot { width: 10px; height: 10px; background: var(--coral); border-radius: 50%; }
+    .email-header h3 { margin: 0; font-size: 21px; font-weight: 400; }
+    .email-header small { color: var(--muted); font: 12px 'Trebuchet MS', Verdana, sans-serif; }
+    .copy-btn { padding: 9px 13px; color: var(--white); background: var(--blue); border: 0; border-radius: 8px; font-size: 11px; font-weight: 700; }
+    .copy-btn:hover { background: var(--deep); }
+    .email-body { padding: 21px 24px 24px; }
+    .subject { margin-bottom: 15px; color: var(--blue); font: 700 13px 'Trebuchet MS', Verdana, sans-serif; }
+    .email-text { max-width: 820px; margin: 0; color: #304b61; white-space: pre-line; font-size: 15px; }
+    .email-footnote { margin: 24px 0 0; color: var(--muted); font: 12px 'Trebuchet MS', Verdana, sans-serif; }
+
+    .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 78px; }
+    .note { padding: 24px; border-left: 4px solid var(--coral); background: var(--deep); color: var(--white); border-radius: 4px 14px 14px 4px; }
+    .note h3 { margin-bottom: 8px; font-size: 22px; font-weight: 400; }
+    .note p { margin: 0; color: #c9e8f3; font-size: 14px; }
+    footer { padding: 25px 0 40px; color: var(--muted); font: 12px 'Trebuchet MS', Verdana, sans-serif; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } * { transition-duration: .01ms !important; } }
+    @media (max-width: 800px) {
+      .shell { width: min(100% - 28px, 620px); }
+      .topbar-inner { min-height: 60px; }
+      nav { gap: 11px; font-size: 10px; }
+      .hero { padding: 56px 0 54px; }
+      .hero-grid, .overview { grid-template-columns: 1fr; gap: 28px; }
+      .signal { max-width: 560px; }
+      .stats { grid-template-columns: 1fr 1fr; margin-bottom: 54px; }
+      .target-grid, .notes { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-note { margin-top: 13px; }
+    }
+    @media (max-width: 480px) {
+      .brand span { display: none; }
+      nav a:nth-child(2) { display: none; }
+      h1 { font-size: 46px; }
+      .stats { gap: 8px; }
+      .stat { min-height: 116px; padding: 15px; }
+      .stat-value { font-size: 25px; }
+      .service-list { grid-template-columns: 1fr; }
+      .email-header { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">O</span><span>Open Capital / Sales Desk</span></a>
+      <nav aria-label="Dashboard navigation">
+        <a href="#opencapital">Open Capital</a>
+        <a href="#targets">Targets</a>
+        <a href="#emails">Emails</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero" id="top">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow">Sales intelligence brief</div>
+        <h1>Open Capital<br><em>in focus.</em></h1>
+        <p class="hero-copy">A clear view of Open Capital, its ranked customer targets, and first-draft outreach for an Africa-focused advisory firm.</p>
+        <a class="hero-link" href="https://www.opencapital.com/" target="_blank" rel="noreferrer">Visit opencapital.com ↗</a>
+      </div>
+      <aside class="signal">
+        <span class="signal-label">Open Capital is</span>
+        <strong>An Africa-focused advisory firm</strong>
+        <p>It drives growth, enables investment, and builds markets through strategy, capital, and practical implementation.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell" id="opencapital">
+      <div class="section-head">
+        <div><div class="eyebrow">01 / Open Capital profile</div><h2>Open Capital at a glance</h2></div>
+        <p class="section-note">A consulting and financial advisory firm with local networks and a broad operating footprint across African markets.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><span class="stat-value">2010</span><span class="stat-label">Operating since</span></div>
+        <div class="stat"><span class="stat-value">30+</span><span class="stat-label">African markets</span></div>
+        <div class="stat"><span class="stat-value">1,600+</span><span class="stat-label">Reported engagements</span></div>
+        <div class="stat"><span class="stat-value">$1.5B+</span><span class="stat-label">Successful transactions</span></div>
+      </div>
+      <div class="overview">
+        <article class="panel reveal">
+          <h3>What Open Capital does</h3>
+          <p>Open Capital drives growth, enables investment, and builds markets across Africa. Its work connects strategy with practical execution for innovative businesses, investors, development partners, donors, foundations, governments, financial service providers, and farmers.</p>
+          <div class="source-row"><a href="https://www.opencapital.com/about-us" target="_blank" rel="noreferrer">About us ↗</a><a href="https://www.opencapital.com/what-we-do" target="_blank" rel="noreferrer">What we do ↗</a></div>
+        </article>
+        <article class="panel reveal">
+          <h3>Capability map</h3>
+          <ul class="service-list">
+            <li>Strategy consulting</li><li>Investment readiness</li><li>Market research</li><li>Transaction advisory</li><li>Financial structuring</li><li>Due diligence</li><li>Program implementation</li><li>Market building</li><li>Agriculture & food systems</li><li>Clean-energy advisory</li><li>Gender-smart investing</li><li>Capital raising</li>
+          </ul>
+          <div class="source-row"><a href="https://www.opencapital.com/consulting" target="_blank" rel="noreferrer">Consulting ↗</a><a href="https://www.opencapital.com/capital-markets" target="_blank" rel="noreferrer">Capital markets ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="targets" id="targets">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">02 / Target shortlist</div><h2>Who to call first</h2></div></div>
+        <div class="target-grid">
+          <article class="target-card reveal">
+            <div class="rank"><span>1</span> strongest match</div><h3>ThriveAgric</h3><div class="country">Nigeria · Agriculture</div>
+            <p class="match"><span class="label">Why it matches</span>ThriveAgric is an agri-business platform and rural growth company, aligned with Open Capital's work in agricultural value chains, market building, and client support.</p>
+            <p><span class="label">Business context</span>Agricultural value chains, farmer financing, and smallholder productivity.</p>
+            <div class="contact"><a href="mailto:info@thriveagric.com">info@thriveagric.com</a><a class="site-link" href="https://thriveagric.com" target="_blank" rel="noreferrer">Website ↗</a></div>
+          </article>
+          <article class="target-card reveal">
+            <div class="rank"><span>2</span> promising fit</div><h3>Bopinc</h3><div class="country">Kenya · Market development</div>
+            <p class="match"><span class="label">Why it matches</span>Bopinc works closely with businesses and SMEs in underserved markets, aligning with Open Capital's advisory and market-development profile.</p>
+            <p><span class="label">Business context</span>Business support and market-development programs for emerging markets.</p>
+            <div class="contact"><a href="mailto:info@bopinc.org">info@bopinc.org</a><a class="site-link" href="https://bopinc.org" target="_blank" rel="noreferrer">Website ↗</a></div>
+          </article>
+          <article class="target-card reveal">
+            <div class="rank"><span>3</span> developing fit</div><h3>AgroMall</h3><div class="country">Nigeria · Agri-commerce</div>
+            <p class="match"><span class="label">Why it matches</span>AgroMall is a food-and-agriculture commerce business with an operational focus that fits Open Capital's agricultural market-building and business-support work.</p>
+            <p><span class="label">Business context</span>Agri-commerce, distribution, and market access for agricultural products and buyers.</p>
+            <div class="contact"><a href="mailto:info@agromall.com.ng">info@agromall.com.ng</a><a class="site-link" href="https://agromall.com.ng" target="_blank" rel="noreferrer">Website ↗</a></div>
+          </article>
+        </div>
+        <p class="section-note target-note">A ranked starting point based on apparent fit. Ability to pay remains unverified because public pricing data was unavailable.</p>
+      </div>
+    </section>
+
+    <section class="shell emails" id="emails">
+      <div class="section-head"><div><div class="eyebrow">03 / Outreach drafts</div><h2>Open the conversation</h2></div></div>
+      <p class="section-note email-note">Three unsent drafts. Use the copy controls to lift a draft into your working email tool, then tailor it with specific proof points.</p>
+      <button class="email-toggle" type="button" aria-expanded="false" aria-controls="email-list">Show email drafts</button>
+      <div class="email-list collapsed" id="email-list">
+        <article class="email-card reveal"><div class="email-header"><div class="email-title"><span class="email-dot"></span><div><h3>ThriveAgric</h3><small>info@thriveagric.com</small></div></div><button class="copy-btn" data-copy="email-1">Copy draft</button></div><div class="email-body"><div class="subject">SUBJECT &nbsp; Open Capital: Exploring a partnership for ThriveAgric</div><p class="email-text" id="email-1">Hi there,
+
+I came across ThriveAgric and believe there may be a strong fit between your work and Open Capital's advisory and market-building capabilities in Africa.
+
+Open Capital focuses on growth, investment enablement, and market building across sectors including agriculture, food systems, clean energy, and development-oriented businesses. ThriveAgric is an agri-business platform and rural growth company in Africa, which matches Open Capital's focus on agricultural value chains, market building, and client-support programs.
+
+I would welcome a conversation about how Open Capital could support ThriveAgric in areas such as strategy, market access, investment readiness, and growth enablement.
+
+If this is of interest, I'd be happy to set up a brief call to explore fit and next steps.
+
+Best,
+[Your Name]</p></div></article>
+        <article class="email-card reveal"><div class="email-header"><div class="email-title"><span class="email-dot"></span><div><h3>Bopinc</h3><small>info@bopinc.org</small></div></div><button class="copy-btn" data-copy="email-2">Copy draft</button></div><div class="email-body"><div class="subject">SUBJECT &nbsp; Open Capital: Exploring a partnership for Bopinc</div><p class="email-text" id="email-2">Hi there,
+
+I came across Bopinc and believe there may be a strong fit between your work and Open Capital's advisory and market-building capabilities in Africa.
+
+Open Capital focuses on growth, investment enablement, and market building across sectors including agriculture, food systems, clean energy, and development-oriented businesses. Bopinc works closely with businesses and SMEs in underserved markets, which aligns with Open Capital's advisory and market-development profile for growth-stage businesses.
+
+I would welcome a conversation about how Open Capital could support Bopinc in areas such as strategy, market access, investment readiness, and growth enablement.
+
+If this is of interest, I'd be happy to set up a brief call to explore fit and next steps.
+
+Best,
+[Your Name]</p></div></article>
+        <article class="email-card reveal"><div class="email-header"><div class="email-title"><span class="email-dot"></span><div><h3>AgroMall</h3><small>info@agromall.com.ng</small></div></div><button class="copy-btn" data-copy="email-3">Copy draft</button></div><div class="email-body"><div class="subject">SUBJECT &nbsp; Open Capital: Exploring a partnership for AgroMall</div><p class="email-text" id="email-3">Hi there,
+
+I came across AgroMall and believe there may be a strong fit between your work and Open Capital's advisory and market-building capabilities in Africa.
+
+Open Capital focuses on growth, investment enablement, and market building across sectors including agriculture, food systems, clean energy, and development-oriented businesses. AgroMall is a food-and-agriculture commerce business with an operational focus that aligns with Open Capital's agricultural market-building and business-support work.
+
+I would welcome a conversation about how Open Capital could support AgroMall in areas such as strategy, market access, investment readiness, and growth enablement.
+
+If this is of interest, I'd be happy to set up a brief call to explore fit and next steps.
+
+Best,
+[Your Name]</p></div></article>
+      </div>
+      <p class="email-footnote">Please review and tailor each email before sending; the target ranking reflects apparent fit, while pricing and ability to pay remain unverified.</p>
+    </section>
+  </main>
+  <footer class="shell">Prepared from the Open Capital profile, target shortlist, and outreach drafts · September 2026</footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => observer.observe(item));
+
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const source = document.getElementById(button.dataset.copy);
+        try {
+          await navigator.clipboard.writeText(source.innerText);
+          const original = button.textContent;
+          button.textContent = 'Copied';
+          setTimeout(() => { button.textContent = original; }, 1400);
+        } catch (error) {
+          button.textContent = 'Select manually';
+          setTimeout(() => { button.textContent = 'Copy draft'; }, 1400);
+        }
+      });
+    });
+
+    const emailToggle = document.querySelector('.email-toggle');
+    const emailList = document.getElementById('email-list');
+    emailToggle.addEventListener('click', () => {
+      const isOpen = emailToggle.getAttribute('aria-expanded') === 'true';
+      emailToggle.setAttribute('aria-expanded', String(!isOpen));
+      emailToggle.textContent = isOpen ? 'Show email drafts' : 'Hide email drafts';
+      emailList.classList.toggle('collapsed', isOpen);
+    });
+  </script>
+</body>
+</html>
