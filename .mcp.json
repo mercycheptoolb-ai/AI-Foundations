@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "yale-som-courses": {
+      "command": "/Users/mercy/Desktop/AI Foundations/lecture 9/yale_som_courses_mcp/mcp/.venv/bin/python",
+      "args": [
+        "/Users/mercy/Desktop/AI Foundations/lecture 9/yale_som_courses_mcp/mcp/mcp_server.py"
+      ]
+    }
+  }
+}
