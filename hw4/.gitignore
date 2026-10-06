@@ -1,0 +1,33 @@
+# Secrets: the real key stays local. Only the placeholder file is committed.
+.env
+.env.*
+!.env.example
+
+# Course data: the database and product photos are not published.
+# Get them from the course's data.zip (see data/README.md).
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/products/
+data.zip
+*.db
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Front end (also in frontend/.gitignore)
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Audit trail backups made only if the file was ever cut off (see harness §9.3)
+output/audit_trail.damaged-*.json
+
+# Local tools and OS files
+.claude/
+.DS_Store
+*.log

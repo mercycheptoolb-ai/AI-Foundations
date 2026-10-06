@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campus Customs: App Check (Problem 11)</title>
+<style>
+  :root { --bg:#0b0b0c; --surface:#141416; --surface2:#1d1d20; --border:#2b2b30; --text:#f6f3ef; --muted:#a8a3a0; --pink:#ff4fa3; --pink-soft:#ff8cc6; --ok:#7ee2a8; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 2.2rem clamp(1rem, 5vw, 4rem) 1.6rem; border-bottom: 6px solid transparent; border-image: repeating-linear-gradient(180deg, var(--pink) 0 2px, transparent 2px 4px) 6; }
+  main { max-width: 1180px; margin: 0 auto; padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 4rem; }
+  h1 { margin:0 0 .3rem; font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing:-.01em; }
+  h1 span, .pink { color: var(--pink); }
+  h2 { margin: 0 0 .35rem; font-size: 1.6rem; }
+  h3 { margin: 1.4rem 0 .5rem; font-size: 1.05rem; color: var(--pink-soft); text-transform: uppercase; letter-spacing: .08em; }
+  .meta { color: var(--muted); margin: 0; }
+  .summary { width: 100%; border-collapse: collapse; margin: 1.2rem 0 .5rem; background: var(--surface); border: 1px solid var(--border); }
+  .summary th, .summary td { padding: .6rem .8rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .summary a { color: var(--pink-soft); }
+  .pass { display:inline-block; padding: .1rem .55rem; border-radius: 999px; background: rgba(126,226,168,.14); color: var(--ok); font-weight: 700; font-size: .85rem; border: 1px solid rgba(126,226,168,.4); }
+  section.check { margin-top: 2.6rem; padding: 1.6rem 1.6rem 1.2rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--pink); border-radius: 8px; }
+  .num { color: var(--pink); font-weight: 800; margin-right: .4rem; }
+  .proves { background: rgba(255,79,163,.1); border: 1px dashed rgba(255,79,163,.55); border-radius: 8px; padding: .8rem 1rem; margin: .9rem 0 1.1rem; }
+  .proves strong { color: var(--pink-soft); }
+  figure { margin: 1rem 0 1.4rem; }
+  figure img { display:block; width:100%; height:auto; border-radius: 8px; border: 1px solid var(--border); background: #000; }
+  figure a { display:block; }
+  figcaption { color: var(--muted); font-size: .95rem; margin-top: .5rem; }
+  figcaption b { color: var(--text); }
+  .row { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; align-items: start; }
+  .row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 760px) { .row.two { grid-template-columns: 1fr; } }
+  .row figure { margin: .4rem 0; }
+  .quote { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88rem; background: var(--surface2); border:1px solid var(--border); border-radius: 6px; padding: .55rem .75rem; margin: .3rem 0; white-space: pre-wrap; }
+  .quote .who { color: var(--pink-soft); font-weight: 700; }
+  table.db { border-collapse: collapse; margin: .4rem 0 .2rem; font-size: .95rem; }
+  table.db th, table.db td { border: 1px solid var(--border); padding: .35rem .7rem; text-align: center; }
+  table.db thead th { background: var(--surface2); color: var(--muted); font-weight: 600; }
+  table.db tbody th { text-align: left; }
+  table.db td.hl { background: rgba(255,79,163,.18); color: var(--pink-soft); font-weight: 800; }
+  table.db td.out { color: var(--muted); }
+  code { background: var(--surface2); padding: .05rem .35rem; border-radius: 4px; font-size: .9em; }
+  footer { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem) 3rem; color: var(--muted); font-size: .92rem; }
+  footer a, .meta a { color: var(--pink-soft); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Campus Customs: <span>App Check</span></h1>
+  <p class="meta">Problem 11 · Live site tested on October 6, 2026 at <code>http://localhost:5180</code> (React front end) with the FastAPI + PydanticAI backend on <code>:8000</code>, reading <code>data/campus_customs.db</code>. Screenshots were taken in Chrome as a guest shopper (nothing was written to the database). Click any screenshot to open it full size.</p>
+</header>
+<main>
+
+<table class="summary" aria-label="Summary of checks">
+  <thead><tr><th>#</th><th>Check</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><a href="#check-1">Chat checks the inventory level of an item: stock and price come honestly from the database</a></td><td><span class="pass">PASS</span></td></tr>
+    <tr><td>2</td><td><a href="#check-2">A category question ("What hoodies do you have?") puts dynamic search-result cards on the page</a></td><td><span class="pass">PASS</span></td></tr>
+    <tr><td>3</td><td><a href="#check-3">Problem 9 usability feature: shop filters (category, "in stock in my size", sort)</a></td><td><span class="pass">PASS</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ============================ CHECK 1 ============================ -->
+<section class="check" id="check-1">
+  <h2><span class="num">Check 1</span>Chat checks the inventory level of an item (honest stock and price)</h2>
+  <div class="proves"><strong>What this proves:</strong> asked about a specific size, the Bulldog Assistant looked up the database and answered <b>“The Yale Dad Hoodie has 20 in stock in size L and costs $68.00.”</b> These are exactly the values in <code>campus_customs.db</code> (L = 20, price $68.00), shown in the table below.</div>
+
+  <figure>
+    <a href="app_check_images/inventory.png"><img src="app_check_images/inventory.png" alt="Products page with the chat open: the shopper asks how many Yale Dad Hoodies are in size L and the price; the assistant answers 20 in stock in L and $68.00, with a product tile." /></a>
+    <figcaption><b>Screenshot 1a: the live site.</b> The shopper asks a stock and price question in the chat on the Products page. The assistant replies with the exact count for size L and the price, plus a product tile linking to the item.</figcaption>
+  </figure>
+
+  <div class="row two">
+    <figure>
+      <a href="app_check_images/inventory_chat_zoom.png"><img src="app_check_images/inventory_chat_zoom.png" alt="Close-up of the chat: question and answer '20 in stock in size L and costs $68.00'." /></a>
+      <figcaption><b>1b: close-up of the chat.</b> The question and the answer: <b>20 in stock in size L, $68.00</b>.</figcaption>
+    </figure>
+    <figure>
+      <a href="app_check_images/inventory_product_page.png"><img src="app_check_images/inventory_product_page.png" alt="Yale Dad Hoodie product page showing $68.00 and the size grid with L: 20 in stock." /></a>
+      <figcaption><b>1c: cross-check on the product page.</b> The Yale Dad Hoodie page reads the same database and shows <b>$68.00</b> and <b>L: 20 in stock</b>, matching the chat.</figcaption>
+    </figure>
+  </div>
+  <div class="row two">
+    <figure>
+      <a href="app_check_images/inventory_soldout_zoom.png"><img src="app_check_images/inventory_soldout_zoom.png" alt="Chat close-up: the bomber jacket is sold out in size M; in stock in XS (8), L (15), XXL (12); similar jackets in M suggested." /></a>
+      <figcaption><b>1d: honest about sold-out sizes.</b> "Is the Brooks Brothers bomber jacket in stock in a medium?" gets <b>"sold out in size M"</b>, with the real in-stock sizes and similar items that are in stock in M.</figcaption>
+    </figure>
+  </div>
+
+  <h3>Exact conversation (copied from the page)</h3>
+  <div class="quote"><span class="who">Shopper:</span> How many Yale Dad Hoodies do you have in size L, and how much are they?
+<span class="who">Bulldog Assistant:</span> The Yale Dad Hoodie has 20 in stock in size L and costs $68.00.</div>
+  <div class="quote"><span class="who">Shopper:</span> Is the Brooks Brothers bomber jacket in stock in a medium?
+<span class="who">Bulldog Assistant:</span> Brooks Brothers Bomber Jacket Yale is sold out in size M. It’s in stock in XS (8), L (15), and XXL (12). Similar navy jacket options available in M: School of Art Fleece Sweater, Divinity School Fleece Sweater, and School of Architecture Fleece Sweater.</div>
+
+  <h3>Database values (ground truth, queried from <code>campus_customs.db</code>)</h3>
+  <table class="db">
+    <thead><tr><th>Product</th><th>Price</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th></tr></thead>
+    <tbody>
+      <tr><th>Yale Dad Hoodie</th><td>$68.00</td><td class="">5</td><td class="">5</td><td class="">12</td><td class="hl">20</td><td class="">12</td><td class="">15</td></tr>
+      <tr><th>Brooks Brothers Bomber Jacket Yale</th><td>$98.00</td><td class="">8</td><td class=" out">0</td><td class="hl out">0</td><td class="">15</td><td class=" out">0</td><td class="">12</td></tr>
+    </tbody>
+  </table>
+  <p class="meta">Highlighted cells are the sizes asked about. Every number in the chat answers (20 · $68.00 · M = 0 · XS 8 · L 15 · XXL 12) matches this table.</p>
+</section>
+
+<!-- ============================ CHECK 2 ============================ -->
+<section class="check" id="check-2">
+  <h2><span class="num">Check 2</span>Dynamic search-result cards after a category question</h2>
+  <div class="proves"><strong>What this proves:</strong> after the shopper asked <b>"What hoodies do you have?"</b>, the agent returned a structured search and the website switched to <code>/products?view=chat</code>, showing <b>27 hoodie cards</b> (the database has exactly 27 hoodies), each with a photo, name, price, and short description.</div>
+
+  <figure>
+    <a href="app_check_images/search_cards.png"><img src="app_check_images/search_cards.png" alt="Products page in chat-results view: 'Play call, from your chat: Hoodies', 27 items, a grid of numbered hoodie cards, and the chat showing the question and the reply 'We have 27 hoodies'." /></a>
+    <figcaption><b>Screenshot 2a: question and result together.</b> In the chat, "What hoodies do you have?" gets “We have 27 hoodies—I’ve put them all on the page. A few picks: Basic Hoodie Big Yale, Champion Reverse Weave Hoodie 1, and UA Gameday Double Knit Hood.” The page has filled with the matching cards under a "Play call · From your chat: Hoodies, 27 items" banner.</figcaption>
+  </figure>
+
+  <div class="row">
+    <figure>
+      <a href="app_check_images/search_cards_grid.png"><img src="app_check_images/search_cards_grid.png" alt="The hoodie results grid with the chat closed: cards with image, name, price, short description and size run." /></a>
+      <figcaption><b>2b: the cards with the chat closed.</b> Each card shows the product image, name, price, a short description, and which sizes are in stock. The first four are Basic Hoodie Big Yale, Brooks Brothers Double Knit Full Zip Hoodie Yale, Champion Full Zip Hood, Champion Reverse Weave Hoodie 1.</figcaption>
+    </figure>
+    <figure>
+      <a href="app_check_images/search_card_opens_detail.png"><img src="app_check_images/search_card_opens_detail.png" alt="Product page for the Brooks Brothers Double Knit Full Zip Hoodie opened from a chat-loaded card, with a Back to results link." /></a>
+      <figcaption><b>2c: a chat-loaded card still opens the product page.</b> Clicking card #02 opened <code>/products/brooks-brothers-double-knit-full-zip-hoodie-yale</code> (large image, $88.00, description, sizes), with "← Back to results" to return to the grid.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ CHECK 3 ============================ -->
+<section class="check" id="check-3">
+  <h2><span class="num">Check 3</span>Problem 9 usability feature: shop filters on the Products page</h2>
+  <div class="proves"><strong>What this proves:</strong> choosing <b>Hoodies</b>, <b>In stock in: M</b>, and <b>Sort: Price low to high</b> shows <b>21 hoodies in stock in M</b> (21 cards; the database has exactly 21 hoodies with stock in M), with the cheapest ($45.00) first. Card #03 carries a real low-stock badge, <b>"Only 5 left in M"</b> (the database has 5 Basic Hoodie Big Yale in M).</div>
+
+  <figure>
+    <a href="app_check_images/usability_filters.png"><img src="app_check_images/usability_filters.png" alt="Products page with the Hoodies pill active, In stock in M, sorted price low to high: '21 hoodies in stock in M', first cards $45.00, an 'Only 5 left in M' badge, and Clear filters." /></a>
+    <figcaption><b>Screenshot 3: shop filters in action.</b> The category pills show live counts for size M (All 80 · Hoodies 21 · Crewnecks 22 · T-shirts 19 · Quarter-zips 9 · Jackets 7 · Long-sleeves 2). The result line reads "21 hoodies in stock in M", the cheapest items ($45.00) come first, and a pink tape badge flags low stock. Items sold out in M are hidden, so shoppers never click into something they can't buy in their size.</figcaption>
+  </figure>
+  <p class="meta">Database check: 27 hoodies in total, 21 with at least one in size M, and the lowest price in M is $45.00. The test log (<a href="app_check_log.json">app_check_log.json</a>) recorded all seven low-stock badges in this result (Only 2 / Only 5 left in M), and they match the database's M counts of 2, 2, 5, 5, 5, 5, 5. The filters are stored in the page URL (<code>/products?category=hoodie&amp;size=M&amp;sort=price_asc</code>, from the log). Keeping them through refresh and Back was tested in Problem 9 (see <code>usability.md</code>).</p>
+</section>
+
+</main>
+<footer>
+  <p>How these were produced: a scripted Chrome session drove the real site (typing into the chat, clicking cards and filters) and saved the screenshots in <code>app_check_images/</code>. The replies above were copied from the page, and the database values were queried from <code>data/campus_customs.db</code> at test time. Raw test log: <a href="app_check_log.json">app_check_log.json</a>.</p>
+</footer>
+</body>
+</html>

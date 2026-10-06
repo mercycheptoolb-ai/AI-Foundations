@@ -1,0 +1,66 @@
+{
+  "q1": "How many Yale Dad Hoodies do you have in size L, and how much are they?",
+  "a1": "The Yale Dad Hoodie has 20 in stock in size L and costs $68.00.",
+  "tiles1": [
+    "Yale Dad Hoodie"
+  ],
+  "q1b": "Is the Brooks Brothers bomber jacket in stock in a medium?",
+  "a1b": "Brooks Brothers Bomber Jacket Yale is sold out in size M. It’s in stock in XS (8), L (15), and XXL (12). Similar navy jacket options available in M: School of Art Fleece Sweater, Divinity School Fleece Sweater, and School of Architecture Fleece Sweater.",
+  "page1": {
+    "price": "$68.00",
+    "sizes": [
+      "XSOnly 5 left",
+      "SOnly 5 left",
+      "M12 in stock",
+      "L20 in stock",
+      "XL12 in stock",
+      "XXL15 in stock"
+    ]
+  },
+  "q2": "What hoodies do you have?",
+  "a2": "We have 27 hoodies—I’ve put them all on the page. A few picks: Basic Hoodie Big Yale, Champion Reverse Weave Hoodie 1, and UA Gameday Double Knit Hood.",
+  "url2": "/products?view=chat",
+  "banner2": "Hoodies",
+  "count2": "27 items · click any card for details",
+  "cards2": 27,
+  "firstCards2": [
+    "Basic Hoodie Big Yale",
+    "Brooks Brothers Double Knit Full Zip Hoodie Yale",
+    "Champion Full Zip Hood",
+    "Champion Reverse Weave Hoodie 1"
+  ],
+  "detail2": {
+    "url": "/products/brooks-brothers-double-knit-full-zip-hoodie-yale",
+    "h1": "Brooks Brothers Double Knit Full Zip Hoodie Yale",
+    "price": "$88.00"
+  },
+  "url3": "/products?category=hoodie&size=M&sort=price_asc",
+  "count3": "21 hoodies in stock in M",
+  "cards3": 21,
+  "prices3": [
+    "$45.00",
+    "$45.00",
+    "$68.00",
+    "$68.00",
+    "$68.00",
+    "$68.00"
+  ],
+  "badges3": [
+    "Only 5 left in M",
+    "Only 5 left in M",
+    "Only 2 left in M",
+    "Only 5 left in M",
+    "Only 2 left in M",
+    "Only 5 left in M",
+    "Only 5 left in M"
+  ],
+  "pills3": [
+    "All 80",
+    "Hoodies 21",
+    "Crewnecks 22",
+    "T-shirts 19",
+    "Quarter-zips 9",
+    "Jackets 7",
+    "Long-sleeves 2"
+  ]
+}
