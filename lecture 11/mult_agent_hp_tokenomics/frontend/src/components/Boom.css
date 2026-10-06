@@ -1,0 +1,125 @@
+.boom {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 30, 90, 0.35), rgba(7, 7, 10, 0.92) 60%);
+  animation: boom-bg 4.5s ease-out forwards;
+}
+
+@keyframes boom-bg {
+  0% { background-color: #fff; }
+  6% { background-color: rgba(255, 77, 166, 0.9); }
+  20% { background-color: transparent; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.boom-flash {
+  position: absolute;
+  width: 20vmax;
+  height: 20vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ffd1e8 25%, #ff4da6 50%, transparent 70%);
+  animation: boom-flash 0.9s ease-out forwards;
+}
+
+@keyframes boom-flash {
+  0% { transform: scale(0.1); opacity: 1; }
+  100% { transform: scale(6); opacity: 0; }
+}
+
+.boom-ring {
+  position: absolute;
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 50%;
+  border: 6px solid #ff4da6;
+  box-shadow: 0 0 40px #ff4da6, inset 0 0 30px #ff4da6;
+  animation: boom-ring 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.boom-ring.r2 { animation-delay: 0.15s; border-color: #ff7a30; }
+.boom-ring.r3 { animation-delay: 0.3s; border-color: #fff; }
+
+@keyframes boom-ring {
+  0% { transform: scale(0.2); opacity: 1; }
+  100% { transform: scale(9); opacity: 0; }
+}
+
+.boom-debris {
+  position: absolute;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  animation: boom-debris 1.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes boom-debris {
+  0% { transform: translate(0, 0) rotate(0) scale(0.3); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--spin)) scale(1.3); opacity: 0; }
+}
+
+.boom-word {
+  position: relative;
+  font-family: var(--font-ui);
+  font-weight: 900;
+  font-size: clamp(4rem, 15vw, 12rem);
+  letter-spacing: 0.04em;
+  color: #fff;
+  -webkit-text-stroke: 4px #ff1e6e;
+  text-shadow:
+    0 0 30px #ff4da6,
+    0 0 80px #ff1e6e,
+    8px 8px 0 #000;
+  animation: boom-word 0.7s cubic-bezier(0.2, 2, 0.4, 1) both, boom-shake 0.08s linear 0.1s 10;
+}
+
+@keyframes boom-word {
+  0% { transform: scale(0.1) rotate(-12deg); opacity: 0; }
+  100% { transform: scale(1) rotate(-6deg); opacity: 1; }
+}
+
+@keyframes boom-shake {
+  0%, 100% { translate: 0 0; }
+  25% { translate: -8px 5px; }
+  50% { translate: 7px -6px; }
+  75% { translate: -5px -4px; }
+}
+
+.boom-sub {
+  position: absolute;
+  top: calc(50% + clamp(3rem, 8.5vw, 7rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: #ffd1e8;
+  text-shadow: 0 0 10px #000;
+  animation: boom-word 0.5s 0.4s ease-out both;
+}
+
+.boom-sub small {
+  font-size: 0.75rem;
+  color: #a58fbf;
+}
+
+/* Shake the whole app on impact. */
+.app.shaking {
+  animation: app-shake 0.6s linear;
+}
+
+@keyframes app-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-14px, 8px) rotate(-0.6deg); }
+  20% { transform: translate(12px, -10px) rotate(0.6deg); }
+  30% { transform: translate(-10px, -6px); }
+  45% { transform: translate(8px, 8px) rotate(-0.3deg); }
+  60% { transform: translate(-6px, 4px); }
+  80% { transform: translate(3px, -2px); }
+}
